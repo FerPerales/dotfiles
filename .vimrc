@@ -36,6 +36,10 @@ Plug 'tomtom/tlib_vim'
 Plug 'garbas/vim-snipmate'
 Plug 'honza/vim-snippets'
 Plug 'jeffkreeftmeijer/vim-numbertoggle'
+Plug 'kchmck/vim-coffee-script'
+Plug 'junegunn/vim-easy-align'
+Plug 'vim-scripts/AdvancedSorters'
+Plug 'chiedo/vim-sort-blocks-by'
 
 call plug#end()
 
@@ -80,6 +84,7 @@ set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
+let g:syntastic_ruby_checkers = ['mri', 'rubocop']
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 1
 
@@ -87,7 +92,24 @@ set nobackup       "no backup files
 set nowritebackup  "only in case you don't want a backup file while editing
 set noswapfile     "no swap files
 
-
 autocmd Filetype html setlocal ts=2 sw=2 expandtab
 autocmd Filetype ruby setlocal ts=2 sw=2 expandtab
 autocmd Filetype javascript setlocal ts=4 sw=4 sts=0 noexpandtab
+
+" Add current file name at the bottom of the status line
+" let g:airline#extensions#tabline#fnamemod = ':t'
+
+" Convert HTML to HAML
+nmap <leader>h :%!html2haml --erb 2> /dev/null<CR>:set ft=haml<CR>
+vmap <leader>h :!html2haml --erb 2> /dev/null<CR>
+
+let g:solarized_bold = 1
+let g:solarized_underline = 1
+let g:solarized_italic = 1
+let g:solarized_contrast = "high"
+let g:solarized_visibility= "high"
+
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
