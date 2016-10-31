@@ -16,28 +16,43 @@ Plug 'scrooloose/nerdcommenter'
 
 " Themes
 Plug 'altercation/vim-colors-solarized'
-Plug 'justincampbell/vim-railscasts'
 Plug 'antlypls/vim-colors-codeschool'
+Plug 'justincampbell/vim-railscasts'
 Plug 'mkarmona/materialbox'
 Plug 'vim-scripts/moria'
+
+
+" Ruby
+Plug 'tpope/vim-rails'
+Plug 'vim-ruby/vim-ruby'
+
+" Go
+Plug 'fatih/vim-go'
+
+" Markdown
+Plug 'suan/vim-instant-markdown'
 
 " Others
 Plug 'vim-airline'
 Plug 'mattn/emmet-vim'
-Plug 'suan/vim-instant-markdown'
 Plug 'tpope/vim-surround'
 Plug 'ervandew/supertab'
 Plug 'scrooloose/syntastic'
-Plug 'tpope/vim-rails'
-Plug 'vim-ruby/vim-ruby'
+Plug 'majutsushi/tagbar'
+Plug 'raimondi/delimitmate'
+Plug 'nathanaelkane/vim-indent-guides'
+Plug 'sheerun/vim-polyglot'
+Plug 'othree/html5.vim'
+Plug 'scrooloose/syntastic'
+Plug 'elzr/vim-json'
+Plug 'xuyuanp/nerdtree-git-plugin'
 
 Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'tomtom/tlib_vim'
-Plug 'garbas/vim-snipmate'
 Plug 'honza/vim-snippets'
 Plug 'jeffkreeftmeijer/vim-numbertoggle'
 Plug 'kchmck/vim-coffee-script'
-Plug 'junegunn/vim-easy-align'
+Plug 'godlygeek/tabular'
 Plug 'vim-scripts/AdvancedSorters'
 Plug 'chiedo/vim-sort-blocks-by'
 
@@ -52,7 +67,8 @@ set number
 
 syntax enable
 set background=dark
-colorscheme solarized
+colorscheme railscasts
+let g:solarized_termcolors=256
 
 highlight ExtraWhitespace ctermbg=red guibg=red
 match ExtraWhitespace /\s\+$/
@@ -80,6 +96,7 @@ set incsearch           " search as characters are entered
 set hlsearch            " highlight matches
 
 "Changes for syntactic
+
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
@@ -97,7 +114,7 @@ autocmd Filetype ruby setlocal ts=2 sw=2 expandtab
 autocmd Filetype javascript setlocal ts=4 sw=4 sts=0 noexpandtab
 
 " Add current file name at the bottom of the status line
-" let g:airline#extensions#tabline#fnamemod = ':t'
+let g:airline#extensions#tabline#fnamemod = ':t'
 
 " Convert HTML to HAML
 nmap <leader>h :%!html2haml --erb 2> /dev/null<CR>:set ft=haml<CR>
@@ -113,3 +130,9 @@ let g:solarized_visibility= "high"
 xmap ga <Plug>(EasyAlign)
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
+
+" Enable tagbar
+
+nmap <F8> :TagbarToggle<CR>
+
+let g:NERDTreeUpdateOnWrite = 1
