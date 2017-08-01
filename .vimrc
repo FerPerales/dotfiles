@@ -62,10 +62,9 @@ Plug 'dai-shi/es-beautifier', {'rtp': 'contrib/vim', 'external_commands': 'node'
 
 
 " Others
-Plug 'vim-airline'
+Plug 'vim-airline/vim-airline'
 Plug 'mattn/emmet-vim'
 Plug 'tpope/vim-surround'
-"Plug 'ervandew/supertab'
 Plug 'scrooloose/syntastic'
 Plug 'majutsushi/tagbar'
 Plug 'raimondi/delimitmate'
