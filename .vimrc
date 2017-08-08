@@ -65,6 +65,7 @@ Plug 'dai-shi/es-beautifier', {'rtp': 'contrib/vim', 'external_commands': 'node'
 Plug 'vim-airline/vim-airline'
 Plug 'mattn/emmet-vim'
 Plug 'tpope/vim-surround'
+"Plug 'ervandew/supertab'
 Plug 'scrooloose/syntastic'
 Plug 'majutsushi/tagbar'
 Plug 'raimondi/delimitmate'
@@ -142,9 +143,9 @@ set noswapfile     "no swap files
 
 autocmd Filetype html setlocal ts=2 sw=2 expandtab
 autocmd Filetype ruby setlocal ts=2 sw=2 expandtab
-autocmd Filetype css setlocal ts=4 sw=4 expandtab
-autocmd Filetype sass setlocal ts=4 sw=4 expandtab shiftwidth=4 tabstop=4
-autocmd Filetype scss setlocal ts=4 sw=4 expandtab shiftwidth=4 tabstop=4
+autocmd Filetype css setlocal ts=2 sw=2 expandtab
+autocmd Filetype sass setlocal ts=2 sw=2 expandtab shiftwidth=2 tabstop=2
+autocmd Filetype scss setlocal ts=2 sw=2 expandtab shiftwidth=2 tabstop=2
 autocmd Filetype js setlocal ts=2 sw=2 sts=0 expandtab shiftwidth=2 tabstop=2
 autocmd Filetype javascript setlocal ts=2 sw=2 sts=0 expandtab shiftwidth=2 tabstop=2
 autocmd Filetype typescript setlocal ts=2 sw=2 sts=0 expandtab shiftwidth=2 tabstop=2
@@ -199,3 +200,5 @@ let g:syntastic_disabled_filetypes = ['scss']
 highlight OverLength ctermbg=red ctermfg=white guibg=#592929
 match OverLength /\%81v.\+/
 set colorcolumn=100
+
+set clipboard=unnamedplus
