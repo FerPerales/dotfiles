@@ -29,7 +29,12 @@ Plug 'tpope/vim-abolish'
 Plug 'chrisbra/NrrwRgn'
 Plug 'wesQ3/vim-windowswap'
 
-let g:SuperTabDefaultCompletionType = '<C-n>'
+Plug 'skwp/greplace.vim'
+
+" greplace settings
+
+set grepprg=ag
+let g:grep_cmd_opts = '--line-numbers --noheading'
 
 " better key bindings for UltiSnipsExpandTrigger
 let g:UltiSnipsExpandTrigger = "<tab>"
@@ -65,7 +70,6 @@ Plug 'dai-shi/es-beautifier', {'rtp': 'contrib/vim', 'external_commands': 'node'
 Plug 'vim-airline/vim-airline'
 Plug 'mattn/emmet-vim'
 Plug 'tpope/vim-surround'
-"Plug 'ervandew/supertab'
 Plug 'scrooloose/syntastic'
 Plug 'majutsushi/tagbar'
 Plug 'raimondi/delimitmate'
@@ -141,17 +145,6 @@ set nobackup       "no backup files
 set nowritebackup  "only in case you don't want a backup file while editing
 set noswapfile     "no swap files
 
-autocmd Filetype html setlocal ts=2 sw=2 expandtab
-autocmd Filetype ruby setlocal ts=2 sw=2 expandtab
-autocmd Filetype css setlocal ts=2 sw=2 expandtab
-autocmd Filetype sass setlocal ts=2 sw=2 expandtab shiftwidth=2 tabstop=2
-autocmd Filetype scss setlocal ts=2 sw=2 expandtab shiftwidth=2 tabstop=2
-autocmd Filetype js setlocal ts=2 sw=2 sts=0 expandtab shiftwidth=2 tabstop=2
-autocmd Filetype javascript setlocal ts=2 sw=2 sts=0 expandtab shiftwidth=2 tabstop=2
-autocmd Filetype typescript setlocal ts=2 sw=2 sts=0 expandtab shiftwidth=2 tabstop=2
-autocmd Filetype jsx setlocal ts=2 sw=2 sts=0 expandtab shiftwidth=2 tabstop=2
-autocmd Filetype ts setlocal ts=2 sw=2 sts=0 expandtab shiftwidth=2 tabstop=2
-
 " Add current file name at the bottom of the status line
 let g:airline#extensions#tabline#fnamemod = ':t'
 
@@ -201,4 +194,12 @@ highlight OverLength ctermbg=red ctermfg=white guibg=#592929
 match OverLength /\%81v.\+/
 set colorcolumn=100
 
-set clipboard=unnamedplus
+if system('uname -s') == "Darwin\n"
+  set clipboard=unnamed "OSX
+else
+  set clipboard=unnamedplus "Linux
+endif
+
+noremap <silent> <F4> :let @+=expand("%:p") . ':' . line(".") <CR>
+
+let NERDSpaceDelims=1
